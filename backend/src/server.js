@@ -6,6 +6,7 @@ require("./routes/transactionRoutes");
 require("dotenv").config();
 const budgetRoutes =
 require("./routes/budgetRoutes");
+const dashboardRoutes = require("./routes/dashboardRoutes");
 
 const app = express();
 
@@ -17,6 +18,7 @@ app.use(
   transactionRoutes
 );
 app.use("/api/budgets", budgetRoutes);
+app.use("/api/dashboard", dashboardRoutes);
 
 app.get("/", (req, res) => {
   res.send("FinTech Backend Running");

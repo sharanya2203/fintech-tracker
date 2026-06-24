@@ -5,10 +5,12 @@ const auth = require("../middleware/auth");
 
 const {
   createBudget,
-  getBudgets
+  getBudgets,
+  deleteBudget,
 } = require("../controllers/budgetController");
 
 router.post("/", auth, createBudget);
 router.get("/", auth, getBudgets);
+router.delete("/:id", auth, deleteBudget);
 
 module.exports = router;

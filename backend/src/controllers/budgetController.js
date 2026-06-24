@@ -35,8 +35,26 @@ const getBudgets = async (req, res) => {
     });
   }
 };
+const deleteBudget = async (req, res) => {
+  try {
+    await pool.query(
+      "DELETE FROM budgets WHERE id=$1 AND user_id=$2",
+      [req.params.id, req.user.id]
+    );
+
+    res.json({
+      message: "Budget Deleted"
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({
+      message: "Server Error"
+    });
+  }
+};
 
 module.exports = {
   createBudget,
-  getBudgets
+  getBudgets,
+  deleteBudget
 };
