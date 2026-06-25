@@ -15,7 +15,7 @@ export default function BudgetsPage() {
       const token = localStorage.getItem("token");
 
       const res = await axios.get(
-        "http://localhost:5000/api/budgets",
+  `${process.env.NEXT_PUBLIC_API_URL}/api/budgets`,
         {
           headers: {
             Authorization: `Bearer ${token}`
@@ -35,7 +35,7 @@ export default function BudgetsPage() {
       const token = localStorage.getItem("token");
 
       await axios.delete(
-        `http://localhost:5000/api/budgets/${id}`,
+  `${process.env.NEXT_PUBLIC_API_URL}/api/budgets/${id}`,
         {
           headers: {
             Authorization: `Bearer ${token}`

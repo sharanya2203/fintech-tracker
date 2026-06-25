@@ -52,7 +52,7 @@ export default function DashboardPage() {
       console.log("Dashboard Token:", token);
 
       const res = await axios.get(
-        "http://localhost:5000/api/dashboard/summary",
+        `${process.env.NEXT_PUBLIC_API_URL}/api/dashboard/summary`,
         {
           headers: {
             Authorization: `Bearer ${token}`

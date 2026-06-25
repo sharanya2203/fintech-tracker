@@ -15,7 +15,7 @@ export default function RegisterPage() {
   const handleRegister = async () => {
     try {
       await axios.post(
-        "http://localhost:5000/api/auth/register",
+        `${process.env.NEXT_PUBLIC_API_URL}/api/auth/register`,
         {
           name,
           email,
@@ -38,7 +38,7 @@ export default function RegisterPage() {
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="bg-white shadow-lg p-8 rounded-lg w-full max-w-md">
+      <div className="bg-white shadow-lg p-8 rounded-lg w-96">
         <h1 className="text-3xl font-bold text-center mb-6">
           Register
         </h1>

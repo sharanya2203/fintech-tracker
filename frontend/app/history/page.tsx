@@ -20,7 +20,7 @@ export default function HistoryPage() {
       const token = localStorage.getItem("token");
 
       const res = await axios.get(
-        "http://localhost:5000/api/transactions",
+  `${process.env.NEXT_PUBLIC_API_URL}/api/transactions`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -40,7 +40,7 @@ export default function HistoryPage() {
       const token = localStorage.getItem("token");
 
       await axios.delete(
-        `http://localhost:5000/api/transactions/${id}`,
+  `${process.env.NEXT_PUBLIC_API_URL}/api/transactions/${id}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,

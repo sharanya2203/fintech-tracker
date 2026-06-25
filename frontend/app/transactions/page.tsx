@@ -17,7 +17,7 @@ export default function TransactionsPage() {
       const token = localStorage.getItem("token");
 
       await axios.post(
-        "http://localhost:5000/api/transactions",
+  `${process.env.NEXT_PUBLIC_API_URL}/api/transactions`,
         {
           amount: Number(amount),
           type,
