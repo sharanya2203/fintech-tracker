@@ -24,13 +24,13 @@ const getSummary = async (req, res) => {
       expense: totalExpense,
       balance: totalIncome - totalExpense,
     });
-  } catch (error) {
-    console.log(error);
+  }catch (error) {
+  console.error(error);
 
-    res.status(500).json({
-      message: "Server Error",
-    });
-  }
+  res.status(500).json({
+    message: error.message,
+  });
+}
 };
 
 const getAnalytics = async (req, res) => {
@@ -80,12 +80,12 @@ const getAnalytics = async (req, res) => {
       highestCategory,
     });
   } catch (error) {
-    console.log(error);
+  console.error(error);
 
-    res.status(500).json({
-      message: "Server Error",
-    });
-  }
+  res.status(500).json({
+    message: error.message,
+  });
+}
 };
 
 const getBudgetStatus = async (req, res) => {
@@ -125,13 +125,13 @@ const getBudgetStatus = async (req, res) => {
     }));
 
     res.json(budgets);
-  } catch (error) {
-    console.log(error);
+  }catch (error) {
+  console.error(error);
 
-    res.status(500).json({
-      message: "Server Error",
-    });
-  }
+  res.status(500).json({
+    message: error.message,
+  });
+}
 };
 
 

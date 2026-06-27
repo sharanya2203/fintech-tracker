@@ -15,7 +15,7 @@ export default function BudgetPage() {
       const token = localStorage.getItem("token");
 
       await axios.post(
-        `${process.env.NEXT_PUBLIC_API_URL}/api/auth/budgets`,
+        `${process.env.NEXT_PUBLIC_API_URL}/api/budgets`,
         {
           category,
           monthly_limit: Number(monthlyLimit),
