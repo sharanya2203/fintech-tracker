@@ -27,24 +27,21 @@ export default function DashboardPage() {
   const [user, setUser] = useState<any>(null);
 
   useEffect(() => {
-    const token = localStorage.getItem("token");
+  const token = localStorage.getItem("token");
 
-    if (!token) {
-      router.push("/login");
-      return;
-    }
+  console.log("API URL:", process.env.NEXT_PUBLIC_API_URL);
+  console.log("Token:", token);
 
-    const storedUser = localStorage.getItem("user");
+  if (!token) {
+    router.push("/login");
+    return;
+  }
 
-    if (storedUser) {
-      setUser(JSON.parse(storedUser));
-    }
-
-    fetchSummary();
-    fetchAnalytics();
-    fetchBudgetStatus();
-    fetchRecentTransactions();
-  }, []);
+  fetchSummary();
+  fetchAnalytics();
+  fetchBudgetStatus();
+  fetchRecentTransactions();
+}, []);
 
   const fetchSummary = async () => {
     try {
@@ -72,7 +69,7 @@ export default function DashboardPage() {
       console.log("Dashboard Token:", token);
 
       const res = await axios.get(
-        "http://localhost:5000/api/dashboard/budget-status",
+        `${process.env.NEXT_PUBLIC_API_URL}/api/dashboard/budget-status`,
         {
           headers: {
            Authorization: `Bearer ${token}`
@@ -92,7 +89,7 @@ export default function DashboardPage() {
       console.log("Dashboard Token:", token);
 
       const res = await axios.get(
-        "http://localhost:5000/api/transactions/recent",
+        `${process.env.NEXT_PUBLIC_API_URL}/api/transactions/recent`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -111,7 +108,7 @@ export default function DashboardPage() {
     console.log("Dashboard Token:", token);
 
     const res = await axios.get(
-      "http://localhost:5000/api/dashboard/analytics",
+      `${process.env.NEXT_PUBLIC_API_URL}/api/dashboard/analytics`,
       {
         headers: {
          Authorization: `Bearer ${token}`
